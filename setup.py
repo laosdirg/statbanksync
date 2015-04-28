@@ -12,4 +12,5 @@ setup(name='statbanksync',
           'statbank',
           'psycopg2',
           'blinker',
+          'sqlalchemy',
       ])
