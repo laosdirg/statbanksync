@@ -8,6 +8,7 @@ import statbank
 
 import logging
 
+
 def sync_table(statbank_table_id):
     """Synchronize a single table (both data and meta tables).
 
@@ -15,7 +16,7 @@ def sync_table(statbank_table_id):
     """
     logging.info("Syncing {} table".format(statbank_table_id))
     # fetch latest metadata for remote table
-    statbank_table = statbank.fetch_tableinfo(statbank_table_id)
+    statbank_table = statbank.tableinfo(statbank_table_id)
 
     # make sure tables exists, create if not
     mirrors.ensure_exists(statbank_table)
