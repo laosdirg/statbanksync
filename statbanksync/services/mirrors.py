@@ -83,7 +83,10 @@ def update_mapping_tables(statbank_table):
                 variables = statbank_table.variables[variable_id].values.values()
                 for variable in variables:
                     if variable.id not in current_map.keys():
-                        row = {dst_id_column: variable.id, value_column: variable.text}
+                        if variable_id == 'tid':
+                            row = {value_column: variable.id, key_column: variable.text}
+                        else:
+                            row = {dst_id_column: variable.id, value_column: variable.text}
                         if not variable_id == 'tid' and all([variable.id.isdigit() for variable in variables]):
                             row[key_column] = variable.id
                         result = session.execute(mapping_table.insert().values(**row))
