@@ -56,7 +56,7 @@ if __name__ == '__main__':
     if args.schedule:
         # Start a scheduler
         sched = BlockingScheduler()
-        sched.add_job(lambda: sync_tables(args.tables), 'cron', day_of_the_week='sun', hour=3)
+        sched.add_job(lambda: sync_tables(args.tables), 'cron', day_of_week='sun', hour=3)
         sched.start()
     else:
         sync_tables(args.tables)
