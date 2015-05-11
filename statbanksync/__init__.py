@@ -8,6 +8,9 @@ import statbank
 
 import logging
 
+import datetime
+import time
+
 
 def sync_table(statbank_table_id):
     """Synchronize a single table (both data and meta tables).
@@ -71,3 +74,4 @@ def reset():
     except Exception as e:
         logging.warn('Could not reset db, is it fresh? %s' % e)
         raise e
+
