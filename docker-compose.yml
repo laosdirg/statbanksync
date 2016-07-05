@@ -1,0 +1,12 @@
+version: '2'
+services:
+  statbanksync:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_URL: "postgresql://postgres:@db:5432/postgres"
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres:9.5

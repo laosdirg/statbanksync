@@ -15,4 +15,5 @@ setup(name='statbanksync',
           'psycopg2',
           'blinker',
           'sqlalchemy',
+          'apscheduler',
       ])

@@ -1,10 +1,13 @@
 """
 Download data from DSTs statbank and keep it up to date in a local database
+
+used by CLI tool, but can be used directly in other projects
 """
 from statbanksync.signals import progress, subprogress
 from statbanksync.services import mirrors
 
-import statbank
+#import statbank
+from statbanksync import statbank
 
 import logging
 
@@ -63,6 +66,7 @@ def get_data(statbank_table_id, **params):
     Yeilds:
         dict: Next row in result
     """
+    # why is this not used?
     pass
 
 
@@ -74,4 +78,3 @@ def reset():
     except Exception as e:
         logging.warn('Could not reset db, is it fresh? %s' % e)
         raise e
-

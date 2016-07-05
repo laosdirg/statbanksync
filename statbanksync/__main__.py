@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# CLI tool for statbanksync
 
 import statbanksync
 
@@ -11,6 +11,7 @@ import logging
 import sys
 logging.basicConfig(level=logging.DEBUG)
 
+from . import database
 
 def confirm(message):
     print(message)
@@ -49,10 +50,15 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    if not database.works():
+        print("ERROR: Could not connect to database")
+        exit(0)
+
     if args.reset:
         confirm("You are about the delete all DST data from the database.")
         statbanksync.reset()
         sync_tables(args.tables)
+
     if args.schedule:
         # Start a scheduler
         sched = BlockingScheduler()

@@ -143,6 +143,10 @@ def reset():
         with create_session() as session:
             for mirror in session.query(Mirror):
                 session.execute('DROP TABLE mirrors_{};'.format(mirror.statbank_table_id))
-    finally:
+    except:
+        print("Something went wrong when dropping old tables, might no be problematic")
+    try:
         Mirror.__table__.drop()
-        Mirror.__table__.create()
+    except:
+        print("Could not drop table, hopefully it just didn't exist")
+    Mirror.__table__.create()

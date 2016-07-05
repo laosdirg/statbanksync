@@ -32,3 +32,10 @@ def create_session():
 
 def to_identifier(identifier):
     return re.sub("[^A-Za-z0-9]", "", identifier)
+
+def works():
+    try:
+        engine.execute("SELECT 1")
+        return True
+    except:
+        return False
