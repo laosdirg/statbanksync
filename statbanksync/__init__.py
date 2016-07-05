@@ -18,14 +18,18 @@ def sync_table(statbank_table_id):
     """Synchronize a single table (both data and meta tables).
 
     When syncing multiple tables consider doing it in multiple threads
+
+    Args:
+        statbank_table_id (string): Table identifier
     """
     logging.info("Syncing {} table".format(statbank_table_id))
+
     # fetch latest metadata for remote table
     statbank_table = statbank.tableinfo(statbank_table_id)
 
     # make sure tables exists, create if not
     mirrors.ensure_exists(statbank_table)
-    conv = mirrors.update_mapping_tables(statbank_table)
+    conv = mirrors.update_mapping_tables(statbank_table) #conversion dictionary to convert the inserted values according to the mappings
 
     # figure out what times we need to fetch data for
     latest_time = mirrors.get_latest_time(statbank_table)

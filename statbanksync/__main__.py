@@ -27,8 +27,8 @@ def confirm(message):
 toolbar_width = 40
 
 
-def handler(x):
-    sys.stdout.write("[%s%s]" % ("=" * x['value'], " " * (x['max']-x['value'])))
+def handler(sender):
+    sys.stdout.write("[%s%s]" % ("=" * sender['value'], " " * (sender['max']-sender['value'])))
     sys.stdout.write("\r")
     sys.stdout.flush()
 
