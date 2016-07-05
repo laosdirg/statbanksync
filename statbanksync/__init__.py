@@ -6,8 +6,7 @@ used by CLI tool, but can be used directly in other projects
 from statbanksync.signals import progress, subprogress
 from statbanksync.services import mirrors
 
-#import statbank
-from statbanksync import statbank
+import statbank
 
 import logging
 

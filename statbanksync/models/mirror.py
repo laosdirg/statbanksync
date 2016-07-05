@@ -42,12 +42,11 @@ def make_mapping_tables(statbank_table):
     metadata = sqlalchemy.MetaData(bind=engine)
     schema = []
     for variable in statbank_table.variables:
-        sequence_name = 'sequence_{}_{}'.format(variable, statbank_table.id)
         mapping_columns = [Column('key',
                                   types.SmallInteger,
                                   Sequence('sequence_{}_{}'.format(variable, statbank_table.id)),
                                   primary_key = True),
-                          Column('dst_id', types.DateTime() if variable == 'tid' else types.Text),
+                          Column('dst_id', types.DateTime() if variable == 'time' else types.Text),
                           Column(variable, types.Text())]
         table_name = '{}_map_{}'.format(variable, statbank_table.id)
         schema.append(sqlalchemy.Table(table_name,
