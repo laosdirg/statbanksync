@@ -22,4 +22,4 @@ ENV LC_ALL "C.UTF-8"
 
 COPY . /usr/src/app
 
-CMD [ "python", "-m", "statbanksync", "--reset", "ft" ]
+CMD [ "python", "-m", "statbanksync", "--reset", "bev107" ]

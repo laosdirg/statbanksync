@@ -11,7 +11,7 @@ setup(name='statbanksync',
       license='MIT',
       packages=['statbanksync'],
       install_requires=[
-          'gisgroup-statbank',
+          'gisgroup-statbank >= 0.0.2',
           'psycopg2',
           'blinker',
           'sqlalchemy',
